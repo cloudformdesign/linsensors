@@ -1,5 +1,5 @@
 import time
-from raspi_i2c import i2c
+from i2cdev import I2C
 import struct
 
 DATA_FORMAT = '!BHB'
@@ -20,7 +20,7 @@ PGA = {
 class AI418S(object):
     def __init__(self, channel, pga=None, current=None):
         self.channel = channel
-        self.dev = i2c(AI418S_ADDR, 1, I2C_SLAVE)
+        self.dev = I2C(AI418S_ADDR, 1, I2C_SLAVE)
         self._pga = pga
         self._current = current
 

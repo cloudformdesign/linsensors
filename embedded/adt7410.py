@@ -63,7 +63,7 @@ print(sensor.temperature)
 
 import time
 
-import sensorbase
+from . import sensorbase
 
 # Default I2C address
 _DEFAULT_ADDRESS = 0x48

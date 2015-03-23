@@ -62,7 +62,7 @@ import io
 import struct
 import time
 
-import sensorbase
+from . import sensorbase
 
 # fcntl
 _I2C_SLAVE = 0x0703

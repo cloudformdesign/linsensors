@@ -60,10 +60,7 @@ print sensor.temperature
 
 import spidev
 
-try:
-    from .sensorbase import SensorBase
-except SystemError:
-    from sensorbase import SensorBase
+from .sensorbase import SensorBase
 
 
 class Max6675(SensorBase):

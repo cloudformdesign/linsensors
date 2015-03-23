@@ -24,10 +24,7 @@
 import math
 import spidev
 
-try:
-    from .max6675 import Max6675
-except SystemError:
-    from max6675 import Max6675
+from .max6675 import Max6675
 
 # Default I2C address for device.
 MCP9808_I2CADDR_DEFAULT        = 0x18

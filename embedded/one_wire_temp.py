@@ -7,10 +7,7 @@ import os
 import glob
 import time
 
-try:
-    from .sensorbase import SensorBase
-except SystemError:
-    from sensorbase import SensorBase
+from .sensorbase import SensorBase
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')

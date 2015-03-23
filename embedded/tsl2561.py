@@ -60,7 +60,7 @@ sensor = tsl2561.Tsl2561(bus)
 print(sensor.lux)
 '''
 
-import sensorbase
+from . import sensorbase
 import time
 
 # Default I2C address

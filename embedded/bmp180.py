@@ -60,7 +60,7 @@ sensor = bmp180.Bmp180(bus)
 print(sensor.pressure_and_temperature)
 '''
 
-import sensorbase
+from . import sensorbase
 import struct
 import time
 
