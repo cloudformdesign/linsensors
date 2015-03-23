@@ -57,7 +57,7 @@ import adt7410
 
 bus = smbus.SMBus(1)
 sensor = adt7410.Adt7410(bus)
-print sensor.temperature
+print(sensor.temperature)
 
 '''
 
@@ -194,12 +194,12 @@ if __name__ == '__main__':
     bus = smbus.SMBus(1)
     sensor = Adt7410(bus)
     for cache in [0, 5]:
-        print '**********'
-        print 'Cache lifetime is %d' % cache
+        print('**********')
+        print('Cache lifetime is %d' % cache)
         sensor.cache_lifetime = cache
         for c in range(10):
             for op_mode in [OP_MODE_CONTINUOUS, OP_MODE_ONESHOT, OP_MODE_1SPS]:
                 sensor.op_mode = op_mode
                 for res in [RESOLUTION_13BITS, RESOLUTION_16BITS]:
                     sensor.resolution = res
-                    print sensor.temperature
+                    print(sensor.temperature)

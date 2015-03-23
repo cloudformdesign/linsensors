@@ -75,7 +75,7 @@ import mpl115a2
 
 bus = smbus.SMBus(1)
 sensor = mpl115a2.Mpl115a2(bus)
-print sensor.pressure_and_temperature
+print(sensor.pressure_and_temperature)
 
 '''
 
@@ -195,10 +195,10 @@ if __name__ == '__main__':
     sensor = Mpl115a2(bus)
 
     for cache in (0, 5):
-        print '**********'
-        print 'Cache lifetime is %d' % cache
+        print('**********')
+        print('Cache lifetime is %d' % cache)
         sensor.cache_lifetime = cache
         for c in range(10):
-            print sensor.pressure
-            print sensor.temperature
-            print sensor.pressure_and_temperature
+            print(sensor.pressure)
+            print(sensor.temperature)
+            print(sensor.pressure_and_temperature)

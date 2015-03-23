@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # Copyright 2014 IIJ Innovation Institute Inc. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -21,6 +19,7 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 # Copyright 2014 Keiichi Shima. All rights reserved.
 #
@@ -46,67 +45,42 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-'''A Python class to access MAX6675 based temperature sensor.  The
-spidev module (https://github.com/doceme/py-spidev) is required.
-
-Example:
-
-import spidev
-import max6675
-
-sensor = max6675.Max6675(0, 0)
-print sensor.temperature
-
-'''
-
-import sensorbase
-import spidev
 import time
 
-class Max6675(sensorbase.SensorBase):
-    def __init__(self, bus = None, client = None):
-        '''Initializes the sensor.
+class SensorBase(object):
+    def __init__(self, update_callback):
+        assert (update_callback is not None)
 
-        bus: The SPI bus.
-        client: The identifier of the client.
+        self._cache_lifetime = 0
+        self._last_updated = None
+        self._update_callback = update_callback
 
-        '''
-        assert(bus is not None)
-        assert(client is not None)
+    def _update(self, **kwargs):
+        now = time.time()
 
-        super(Max6675, self).__init__(self._update_sensor_data)
+        # If caching is disabled, just update the data.
+        if self._cache_lifetime > 0:
+            # Check if the cached value is still valid or not.
+            if (self._last_updated is not None
+                and self._last_updated + self._cache_lifetime > now):
+                # The value is still valid.
+                return
 
-        self._bus = bus
-        self._client = client
+        # Get the latest sensor values.
+        self._update_callback(**kwargs)
+        self._last_updated = now
 
-        self._temperature = None
-
-        self._handle = spidev.SpiDev(self._bus, self._client)
-
-    def __del__(self):
-        if hasattr(self, '_handle'):
-            self._handle.close()
+        return
 
     @property
-    def temperature(self):
-        '''Returns a temperature value.  Returns None if no valid value is
-        set yet.
+    def cache_lifetime(self):
+        '''Gets/Sets the cache time (in seconds).
 
         '''
-        self._update()
-        return (self._temperature)
+        return (self._cache_lifetime)
 
-    def _update_sensor_data(self):
-        vals = self._handle.readbytes(2)
-        self._temperature = ((vals[0] << 8 | vals[1]) >> 3) * 0.25
+    @cache_lifetime.setter
+    def cache_lifetime(self, cache_lifetime):
+        assert(cache_lifetime >= 0)
 
-if __name__ == '__main__':
-    import spidev
-
-    sensor = Max6675(0, 0)
-    for cache in [0, 5]:
-        print '**********'
-        print 'Cache lifetime is %d' % cache
-        sensor.cache_lifetime = cache
-        for c in range(10):
-            print sensor.temperature
+        self._cache_lifetime = cache_lifetime

@@ -57,7 +57,7 @@ import bmp180
 
 bus = smbus.SMBus(1)
 sensor = bmp180.Bmp180(bus)
-print sensor.pressure_and_temperature
+print(sensor.pressure_and_temperature)
 '''
 
 import sensorbase
@@ -233,11 +233,11 @@ if __name__ == '__main__':
     bus = smbus.SMBus(1)
     sensor = Bmp180(bus)
     for cache in [0, 5]:
-        print '**********'
-        print 'Cache lifetime is %d' % cache
+        print('**********')
+        print('Cache lifetime is %d' % cache)
         sensor.cache_lifetime = cache
         for mode in [OS_MODE_SINGLE, OS_MODE_2, OS_MODE_4, OS_MODE_8]:
             sensor.os_mode = mode
-            print 'Oversampling mode is %d' % mode
+            print('Oversampling mode is %d' % mode)
             for c in range(10):
-                print sensor.pressure_and_temperature
+                print(sensor.pressure_and_temperature)

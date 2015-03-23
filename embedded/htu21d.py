@@ -53,7 +53,7 @@ Example:
 
 bus = 1
 sensor = htu21d.Htu21d(bus)
-print sensor.humidity
+print(sensor.humidity)
 
 '''
 
@@ -222,8 +222,8 @@ if __name__ == '__main__':
     bus = 1
     sensor = Htu21d(bus)
     for cache in [0, 5]:
-        print '**********'
-        print 'Cache lifetime is %d' % cache
+        print('**********')
+        print('Cache lifetime is %d' % cache)
         sensor.cache_lifetime = cache
         for c in range(10):
             for res in [RESOLUTION_12BITS,
@@ -231,4 +231,4 @@ if __name__ == '__main__':
                         RESOLUTION_10BITS,
                         RESOLUTION_11BITS]:
                 sensor.resolution = res
-                print sensor.humidity, sensor.temperature
+                print(sensor.humidity, sensor.temperature)

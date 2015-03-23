@@ -57,7 +57,7 @@ import tsl2561
 
 bus = smbus.SMBus(1)
 sensor = tsl2561.Tsl2561(bus)
-print sensor.lux
+print(sensor.lux)
 '''
 
 import sensorbase
@@ -212,8 +212,8 @@ if __name__ == '__main__':
     bus = smbus.SMBus(1)
     sensor = Tsl2561(bus)
     for cache in [0, 5]:
-        print '**********'
-        print 'Cache lifetime is %d' % cache
+        print('**********')
+        print('Cache lifetime is %d' % cache)
         sensor.cache_lifetime = cache
         for c in range(10):
-            print sensor.lux
+            print(sensor.lux)
