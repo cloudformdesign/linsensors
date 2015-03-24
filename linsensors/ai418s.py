@@ -30,7 +30,6 @@ import struct
 
 DATA_FORMAT = '!BHB'
 
-I2C_SLAVE = 0x0703
 AI418S_ADDR = 0x68
 STD_CONFIG = '1{}011{}'.format  # std config, call it with the channel (00, 01, etc)
 tobin = '{:02b}'.format
@@ -44,9 +43,27 @@ PGA = {
 
 
 class AI418S(object):
-    def __init__(self, channel, pga=None, current=None):
+    '''A 0-40mA and/or 0-10V reading device over I2C
+
+    purchase here:
+    http://www.ereshop.com/shop/analog-inputs-c-143_179/i2c-analog-to-digital-p-805.html
+
+    Pinout:
+    /------------------\
+    |                  |
+    |                  |
+    |      VGCD        |
+    \------------------/
+
+    V=VCC 2.7-5.5V
+    G=GND
+    C=SCL (i2c)
+    D=SDL (i2c)
+    '''
+
+    def __init__(self, channel, pga=None, current=None, bus=1):
         self.channel = channel
-        self.dev = I2C(AI418S_ADDR, 1, I2C_SLAVE)
+        self.dev = I2C(AI418S_ADDR, bus)
         self._pga = pga
         self._current = current
 
@@ -75,5 +92,5 @@ if __name__ == '__main__':
     print("running")
     dev = AI418S(0)
     while True:
-        print("Value: ", dev.read(2))
+        print("Value: ", dev.read())
 

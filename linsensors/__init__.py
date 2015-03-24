@@ -24,6 +24,5 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from .max6675 import Max6675
-from .max31855 import Max31855
-from .one_wire_temp import OneWireTemp
+__version__ = '0.0.1'
+
