@@ -1,7 +1,8 @@
 # Copyright (c) 2015 n.io
 # Author: Garrett Berg
 # Modified from code by Tony DiCola
-# https://github.com/adafruit/Adafruit_Python_MAX31855/blob/master/Adafruit_MAX31855/MAX31855.py
+# https://github.com/adafruit/Adafruit_Python_MAX31855/blob/master/
+#   Adafruit_MAX31855/MAX31855.py
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
