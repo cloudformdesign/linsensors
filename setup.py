@@ -5,21 +5,22 @@ except ImportError:
 from cloudtb import __version__
 
 config = {
-    'name': 'embedded_sensors',
+    'name': 'linsensors',
     'author': 'Garrett Berg',
     'author_email': 'garrett@cloudformdesign.com',
     'version': __version__,
-    'packages': ['embedded_sensors'],
+    'packages': ['linsensors'],
     'license': 'MIT',
     'install_requires': [
         'spidev',
         'i2cdev',
+        'pyserial',
     ],
     'extras_require': {
         'smbus': ['smbus'],
     },
-    'description': "Interface with embedded sensors through i2c, spi, etc",
-    'url': "https://github.com/cloudformdesign/embedded_sensors",
+    'description': "Interface with embedded sensors in linux through i2c, spi, etc",
+    'url': "https://github.com/cloudformdesign/linsensors",
     'classifiers': [
         # 'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
