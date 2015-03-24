@@ -2,7 +2,7 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-from cloudtb import __version__
+from linsensors import __version__
 
 config = {
     'name': 'linsensors',
