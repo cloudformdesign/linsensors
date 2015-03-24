@@ -59,6 +59,17 @@ class AI418S(object):
     G=GND
     C=SCL (i2c)
     D=SDL (i2c)
+
+    Methods:
+        init(channel, pga, current):
+            channel (int): channel 0-3 of the device. Corresponds to markings 1-4
+            pga (int): Programmable gain. See  ai418s.PGA for gain options
+            current (bool): select whether readings are for current or voltage
+
+        read(pga, current):
+            pga (int): see init method. Automatically uses default of 1 if not
+                selected anywhere
+            current (bool): see init method. Default is True
     '''
 
     def __init__(self, channel, pga=None, current=None, bus=1):
