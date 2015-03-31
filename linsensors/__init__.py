@@ -26,3 +26,12 @@
 
 __version__ = '0.0.1'
 
+import glob
+import re
+
+
+def i2c_busses():
+    paths='/sys/bus/i2c/devices/i2c-'
+    exp = re.compile(paths + '(\d*)')
+    busses = glob.glob(paths + '*')
+    return [int(re.search(exp, b).group(1)) for b in busses]

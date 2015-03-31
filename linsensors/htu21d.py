@@ -52,7 +52,7 @@ CMD_READ_USER_REG = b"\xE7"
 CMD_SOFT_RESET = b"\xFE"
 
 
-class HTU21D(object):
+class Htu21d(object):
     def __init__(self, address):
         self.dev = I2C(HTU21D_ADDR, 1, address)  # HTU21D 0x40, bus 1
         with self.dev.lock:
