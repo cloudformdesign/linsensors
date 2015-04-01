@@ -12,12 +12,11 @@ config = {
     'packages': ['linsensors'],
     'license': 'MIT',
     'install_requires': [
-        'spidev',
         'i2cdev',
         'pyserial',
     ],
     'extras_require': {
-        'smbus': ['smbus'],
+        'spi': ['smbus', 'spidev'],
     },
     'description': "Interface with embedded sensors in linux through i2c, spi, etc",
     'url': "https://github.com/cloudformdesign/linsensors",
