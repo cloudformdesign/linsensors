@@ -10,12 +10,47 @@ linsensors works for both python 2 and 3
 pip install linsensors
 ```
 
-Additionally, you may want to install spi funcctionality, which is required to interface with
-several sensors.
+### SPI
 
-In order to get these, you must first install modbus’s dependencies
+SPI is not supported by most kernels automatically. In order to use it, it must be compiled
+into the kernel. A tutorial on this will be included here eventually.
 
-**On Debian / Ubuntu**
+However, some embedded devices have it pre-compiled, or there is a simple way to enable
+it:
+
+#### Raspberry Pi
+Make the following files look like: (from [here](http://www.modmypi.com/blog/loading-i2c-spi-and-1-wire-drivers-on-the-raspberry-pi-under-raspbian-wheezy))
+
+This also enables i2c, 1-wire and 1-wire-thermometers
+
+- `nano /etc/modprobe.d/raspi-blacklist.conf`:
+```
+# blacklist spi and i2c by default (many users don’t need them)
+blacklist spi-bcm2708
+blacklist i2c-bcm2708
+```
+- `nano /etc/modules` :
+```
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with “#” are ignored.
+# Parameters can be specified after the module name.
+#
+# sound devices
+snd-bcm2835
+# SPI devices
+spi-dev
+# I2C devices
+i2c-dev
+# 1-Wire devices
+w1-gpio
+# 1-Wire thermometer devices
+w1-therm
+```
+
+#### Installing required libraries for python modules
+**On Debian/Ubuntu**
 ```
 sudo apt-get install python-dev  # or python3-dev
 sudo apt-get install libffi-dev
