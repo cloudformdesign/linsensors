@@ -16,7 +16,7 @@ config = {
         'pyserial',
     ],
     'extras_require': {
-        'spi': ['smbus', 'spidev'],
+        'spi': ['smbus-cffi', 'spidev'],
     },
     'description': "Interface with embedded sensors in linux through i2c, spi, etc",
     'url': "https://github.com/cloudformdesign/linsensors",
