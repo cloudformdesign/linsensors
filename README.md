@@ -10,15 +10,11 @@ linsensors works for both python 2 and 3
 pip install linsensors
 ```
 
-### SPI
-
-SPI is not supported by most kernels automatically. In order to use it, it must be compiled
-into the kernel. A tutorial on this will be included here eventually.
-
-However, some embedded devices have it pre-compiled, or there is a simple way to enable
-it:
 
 #### Raspberry Pi
+
+- Follow [these directions] to enable I2C
+- 
 Make the following files look like: (from [here](http://www.modmypi.com/blog/loading-i2c-spi-and-1-wire-drivers-on-the-raspberry-pi-under-raspbian-wheezy))
 
 This also enables i2c, 1-wire and 1-wire-thermometers
