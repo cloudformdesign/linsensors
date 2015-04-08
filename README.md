@@ -10,11 +10,10 @@ linsensors works for both python 2 and 3
 pip install linsensors
 ```
 
-
 #### Raspberry Pi
 
 - Follow [these directions] to enable I2C
-- 
+
 Make the following files look like: (from [here](http://www.modmypi.com/blog/loading-i2c-spi-and-1-wire-drivers-on-the-raspberry-pi-under-raspbian-wheezy))
 
 This also enables i2c, 1-wire and 1-wire-thermometers
