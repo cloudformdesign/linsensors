@@ -12,7 +12,7 @@ pip install linsensors
 
 #### Raspberry Pi
 
-- Follow [these directions] to enable I2C
+- Follow [these directions](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) to enable I2C
 
 Make the following files look like: (from [here](http://www.modmypi.com/blog/loading-i2c-spi-and-1-wire-drivers-on-the-raspberry-pi-under-raspbian-wheezy))
 
